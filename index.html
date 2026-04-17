@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light">
+    <div class="top-bar">
+        <h1></h1>
+        <div class="controls">
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle" onclick="toggleTheme()">
+                <span class="slider"></span>
+            </label>
+            <button id="history-toggle" onclick="toggleHistory()">📜</button>
+            <button id="converter-toggle" onclick="toggleConverter()">📄</button>
+            <button id="snake-toggle" onclick="toggleSnake()">🐍</button>
+            <button id="flappy-toggle" onclick="toggleFlappy()">🐦</button>
+        </div>
+    </div>
+    <div id="particles"></div>
+    
+    <!-- Snake Game (hidden by default) -->
+    <div id="snake-game" class="hidden">
+        <h3>Snake Game <button class="close-btn" onclick="toggleSnake()">✕</button></h3>
+        <canvas id="snake-canvas" width="300" height="300"></canvas>
+        <p>Score: <span id="snake-score">0</span></p>
+        <button onclick="startSnake()">Start Game</button>
+        <button onclick="stopSnake()">Stop</button>
+    </div>
+    
+    <!-- Flappy Bird Game (hidden by default) -->
+    <div id="flappy-game" class="hidden">
+        <h3>Flappy Bird <button class="close-btn" onclick="toggleFlappy()">✕</button></h3>
+        <canvas id="flappy-canvas" width="300" height="400"></canvas>
+        <p>Score: <span id="flappy-score">0</span></p>
+        <button onclick="startFlappy()">Start Game</button>
+        <button onclick="stopFlappy()">Stop</button>
+    </div>
+    
+    <!-- Word to PDF Converter (hidden by default) -->
+    <div id="converter" class="hidden">
+        <h3>Word to PDF <button class="close-btn" onclick="toggleConverter()">✕</button></h3>
+        <input type="file" id="word-file" accept=".docx">
+        <button onclick="convertToPDF()">Convert to PDF</button>
+        <div id="pdf-preview"></div>
+    </div>
+    
+    <div id="main-container">
+        <div id="history-panel" class="hidden">
+            <h3>History <button class="close-btn" onclick="toggleHistory()">✕</button></h3>
+            <div id="history-list"></div>
+            <button onclick="clearHistory()" class="clear-history-btn">Clear</button>
+        </div>
+        <div id="calculator">
+        <input id="display" readonly>
+        <div id="keys">
+            <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('*')" class="operator-btn">X</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('/')" class="operator-btn">÷</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="clearDisplay()" class="operator-btn">C</button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
